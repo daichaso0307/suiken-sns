@@ -1,0 +1,13 @@
+<h1>ユーザ一覧</h1>
+
+<% @users.each do |user| %>
+    <p><%= user.name %></p>
+    <% follow = Follow.find_by(user_id: @login_user.id, following_user_id: user.id) %>
+    <% if follow.nil? %>
+        <%= button_to 'フォロー', controller: 'follows', params: {user_id: @login_user.id, following_user_id: user.id} %>
+    <% else %>
+        <%= button_to 'フォロー解除', follow_path(follow.id), method: :delete %>
+    <% end %>
+<% end %>
+</br>
+<%= link_to 'ホームへ', '/' %>

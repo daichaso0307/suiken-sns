@@ -1,0 +1,11 @@
+<h1>ユーザ登録</h1>
+
+<%= form_for @User do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+    </br>
+    <%= f.label :password %>
+    <%= f.text_field :password %>
+    </br>
+    <%= f.submit 'ユーザ作成', class: 'button' %>
+<% end %>
