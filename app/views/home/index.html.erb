@@ -19,6 +19,6 @@
 
 <% @posts.each do |post| %>
     <h5><%= post.user.name %></h5>
-    <p><%= post.content %></p>
+    <p><%= post.title %></p>
     <%= link_to '詳細', post %>
 <% end %>
