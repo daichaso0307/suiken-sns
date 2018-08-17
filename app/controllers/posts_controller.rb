@@ -17,4 +17,7 @@ class PostsController < ApplicationController
     @post.save
     redirect_to '/'
   end
+  
+  def show
+  end
 end

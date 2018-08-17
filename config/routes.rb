@@ -11,6 +11,10 @@ Rails.application.routes.draw do
     resources :users
   
     resources :follows
+  
+    resources :posts do
+        resources :comments
+    end
     
     root to: 'home#index'
     get 'home/index'
