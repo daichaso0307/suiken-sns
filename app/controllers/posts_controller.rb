@@ -20,5 +20,11 @@ class PostsController < ApplicationController
   end
   
   def show
+    @detail = Post.find(params[:id])
+  end
+  
+  def destroy
+    Post.find(params[:id]).destroy
+    redirect_to '/'
   end
 end
