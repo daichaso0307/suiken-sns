@@ -13,6 +13,7 @@ class PostsController < ApplicationController
     
     @post = Post.new
     @post.content = params[:post][:content]
+    @post.title = params[:post][:title]
     @post.user_id = @login_user.id
     @post.save
     redirect_to '/'
