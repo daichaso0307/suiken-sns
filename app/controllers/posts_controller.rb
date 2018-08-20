@@ -11,10 +11,13 @@ class PostsController < ApplicationController
       return
     end
     
+    @user = User.find_by(id: @login_user.id)
+    
     @post = Post.new
     @post.content = params[:post][:content]
     @post.title = params[:post][:title]
     @post.user_id = @login_user.id
+    @post.user_name = @user.name
     @post.save
     redirect_to '/'
   end
