@@ -2,7 +2,6 @@ Rails.application.routes.draw do
   
     get 'follows/create'
     get 'posts/new'
-    get 'posts/comment'
     resources :posts
   
     get 'users/new'
@@ -16,6 +15,9 @@ Rails.application.routes.draw do
     resources :posts do
         resources :comments
     end
+    
+    get 'favorites/index'
+    post '/favorites', to: 'favorites#create'
     
     root to: 'home#index'
     get 'home/index'

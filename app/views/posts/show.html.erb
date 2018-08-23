@@ -1,7 +1,8 @@
-<h1><%= @detail.title %></h1>
-<p><%= @detail.user_id %></p>
+<h3><%= @detail.title %></h3>
+<p><%= @detail.user_name %></p>
 <p><%= @detail.content %></p>
 
-<%= link_to '削除', post_path(params[:id]), method: :delete, data: { confirm: "You sure?" } %>
-
-<%= link_to 'コメント', 'comment' %>
+<%= button_to '削除', post_path(params[:id]), method: :delete, data: { confirm: "この投稿を削除しますか？" } %>
+<%= button_to 'コメント', '') %>
+</br>
+<%= link_to '戻る', :back %>

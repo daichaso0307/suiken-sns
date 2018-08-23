@@ -1,1 +1,16 @@
 <h1>コメント</h1>
+
+<%= form_for @comment do |c| %>
+  <div class="field">
+    <%= c.label :title %></br>
+    <%= c.text_field :title %>
+  </div>
+  
+  <div class="field">
+    <%= c.label :content %></br>
+    <%= c.text_area :content %>
+  </div>
+  <%= c.submit '投稿', class: 'button' %>
+  </br>
+  <%= link_to '戻る', :back %>
+<% end %>
