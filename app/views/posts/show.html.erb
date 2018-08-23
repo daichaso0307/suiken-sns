@@ -3,6 +3,6 @@
 <p><%= @detail.content %></p>
 
 <%= button_to '削除', post_path(params[:id]), method: :delete, data: { confirm: "この投稿を削除しますか？" } %>
-<%= button_to 'コメント', '') %>
+<%= button_to 'コメント', new_post_comment_path(@detail.id) %>
 </br>
 <%= link_to '戻る', :back %>

@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
-    def new
+  def new
         
-    end
+  end
   
   def create
     if @login_user.nil?
