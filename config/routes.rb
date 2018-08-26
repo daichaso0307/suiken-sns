@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   
     get 'follows/create'
     get 'posts/new'
+    post 'posts/:post_id/comments/new' => 'comments#new'
     resources :posts
   
     get 'users/new'
