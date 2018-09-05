@@ -24,6 +24,10 @@ class PostsController < ApplicationController
   
   def show
     @detail = Post.find(params[:id])
+    
+    @comments = []
+    @comments = Comment.where(post_id: @detail.id)
+    @comments = @comments.order("created_at desc")
   end
   
   def destroy

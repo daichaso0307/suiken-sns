@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
   def new
-    @comment = Comment.new
+    @comment = Comment.find_by(params[:id])
   end
   
   def create
