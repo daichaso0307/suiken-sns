@@ -6,14 +6,12 @@
     <%= link_to 'ログイン', 'users/login' %>
 <% else %>
     <%= @login_user.name + 'でログインしています' %>
-    <%= link_to 'ログアウト', 'users/logout' %>
-    </br>
-    <%= link_to '新規投稿', new_post_path %>
-    </br>
+    <%= link_to 'ログアウト', 'users/logout' %></br>
+    <%= link_to '新規投稿', new_post_path %></br>
+    <%= link_to 'ユーザ一覧', 'users' %></br>
     <%= link_to '退会', user_path(@login_user), method: :delete, data: { confirm: "You sure?" } %>
     <% if @login_user.name == 'admin' %>
         </br>
-        <%= link_to 'ユーザ一覧', 'users' %>
     <% end %>
 <% end %>
 
