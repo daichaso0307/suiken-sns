@@ -1,10 +1,19 @@
-<h1>コメント</h1>
-
-<%= form_for @comment, :url => {:action => :new} do |c| %>
-  <div class="field">
-    <%= c.label :content %></br>
-    <%= c.text_area :content %>
+<div class="main posts-new">
+  <div class="container">
+    <h1>コメント</h1>
+    <%= form_tag("/posts/#{params[:post_id]}/comments") do %>
+      <div class="form">
+        <div class="form-body">
+          <% @comment.errors.full_messages.each do |message| %>
+            <div class="form-error">
+              <%= message %>
+            </div>
+          <% end %>
+          <p>コメント</p>
+          <textarea name="content"><%= @comment.content %></textarea>
+          <input type="submit" value="投稿">
+        </div>
+      </div>
+    <% end %>
   </div>
-<% end %>
-<%= button_to '投稿', post_comments_path(params[:post_id]) %></br>
-<%= link_to '戻る', :back %>
+</div>

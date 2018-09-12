@@ -5,14 +5,11 @@ class CommentsController < ApplicationController
   end
   
   def create
-    if @login_user.nil?
-      redirect_to '/'
-      return
-    end
-    
     @comment = Comment.new
-    @comment.content = params[:post][:content]
-    @comment.user_name = @login_user.name
+    @comment.post_id = params[:post_id]
+    @comment.content = params[:content]
+    @comment.user_name = User.find_by(cookies[:user_id])
     @comment.save
+    redirect_to '/posts/#{post.id}'
   end
 end

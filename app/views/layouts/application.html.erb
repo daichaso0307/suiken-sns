@@ -1,15 +1,50 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>App</title>
+    <title>市原粋犬会</title>
     <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <header>
+      <div class="header-logo">
+        <%= link_to("市原粋犬会", "/") %>
+      </div>
+      <ul class="header-menus">
+        <% current_user = User.find_by(id: session[:user_id]) %>
+        <% if current_user %>
+          <li>
+            現在ログインしているユーザー:
+            <%= current_user.name %>
+          </li>
+          <li>
+            <%= link_to 'ユーザ一覧', '/users' %>
+          </li>
+          <% if current_user.name == "admin" %>
+            <li>
+              <%= link_to("ユーザ登録", "/signup") %>
+            </li>
+          <% end %>
+          <li>
+            <%= link_to("ログアウト", "/logout", {method: :post}) %>
+          </li>
+          <li>
+            <%= link_to("新規投稿", new_post_path) %>
+          </li>
+          <li>
+            <%= link_to("投稿一覧", posts_index_path) %>
+          </li>
+        <% else %>
+          <li>
+            <%= link_to 'ログイン', '/login' %>
+          </li>
+        <% end %>
+      </ul>
+    </header>
+    
     <%= yield %>
   </body>
 </html>

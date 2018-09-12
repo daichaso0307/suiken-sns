@@ -1,13 +1,14 @@
-<h1>ユーザ一覧</h1>
-
-<% @users.each do |user| %>
-    <p><%= user.name %></p>
-    <% follow = Follow.find_by(user_id: @login_user.id, following_user_id: user.id) %>
-    <% if follow.nil? %>
-        <%= button_to 'フォロー', controller: 'follows', params: {user_id: @login_user.id, following_user_id: user.id} %>
-    <% else %>
-        <%= button_to 'フォロー解除', follow_path(follow.id), method: :delete %>
+<div class="main users-index">
+  <div class="container">
+    <h1 class="users-heading">ユーザー一覧</h1>
+    <% @users.each do |user| %>
+      <div class="users-index-item">
+        <div class="user-right">
+          <p><%= user.name %></p>
+        </div>
+      </div>
     <% end %>
-<% end %>
-</br>
-<%= link_to '戻る', :back %>
+    </br>
+    <%= link_to '戻る', :back %>
+  </div>
+</div>

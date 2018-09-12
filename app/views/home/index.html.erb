@@ -1,22 +1,2 @@
-<h1>Home画面</h1>
-</br>
-<% if @login_user.nil? %>
-    <p>ログインしていません</p>
-    <%= link_to 'ユーザー登録', 'users/new' %></br>
-    <%= link_to 'ログイン', 'users/login' %>
-<% else %>
-    <%= @login_user.name + 'でログインしています' %>
-    <%= link_to 'ログアウト', 'users/logout' %></br>
-    <%= link_to '新規投稿', new_post_path %></br>
-    <%= link_to 'ユーザ一覧', 'users' %></br>
-    <%= link_to '退会', user_path(@login_user), method: :delete, data: { confirm: "You sure?" } %>
-    <% if @login_user.name == 'admin' %>
-        </br>
-    <% end %>
-<% end %>
-
-<% @posts.each do |post| %>
-    <h5><%= post.user.name %></h5>
-    <p><%= post.title %></p>
-    <%= link_to '詳細', post %>
-<% end %>
+<div class="main top-main">
+</div>

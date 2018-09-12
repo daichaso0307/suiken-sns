@@ -1,15 +1,21 @@
-<h1>新規投稿</h1>
-
-<%= form_for @post do |f| %>
-  <div class="field">
-    <%= f.label :title %></br>
-    <%= f.text_field :title %>
+<div class="main posts-new">
+  <div class="container">
+    <%= form_tag("/posts") do %>
+      <div class="form">
+        <div class="form-body">
+          <% @post.errors.full_messages.each do |message| %>
+            <div class="form-error">
+              <%= message %>
+            </div>
+          <% end %>
+          
+          <p>タイトル</p>
+          <input type="text" name="title"><%= @post.title %></br>
+          <p>本文</p>
+          <textarea name="content"><%= @post.content %></textarea>
+          <input type="submit" value="投稿">
+        </div>
+      </div>
+    <% end %>
   </div>
-  
-  <div class="field">
-    <%= f.label :content %></br>
-    <%= f.text_area :content %>
-  </div>
-  <%= f.submit '投稿', class: 'button' %></br>
-  <%= link_to '戻る', :back %>
-<% end %>
+</div>

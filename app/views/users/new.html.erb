@@ -1,13 +1,24 @@
-<h1>ユーザ登録</h1>
-
-<%= form_for @User do |f| %>
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-    </br>
-    <%= f.label :password %>
-    <%= f.text_field :password %>
-    </br>
-    <%= f.submit 'ユーザ作成', class: 'button' %>
-    </br>
-    <%= link_to '戻る', :back %>
-<% end %>
+<div class="main users-new">
+  <div class="container">
+    <div class="form-heading">新規ユーザー登録</div>
+    <div class="form users-form">
+      <div class="form-body">
+        <% @user.errors.full_messages.each do |message| %>
+          <div class="form-error">
+            <%= message %>
+          </div>
+        <% end %>
+        
+        <%= form_tag("/users/create") do %>
+          <p>ユーザ名</p>
+          <input name="name" value="<%= @user.name %>">
+          <p>メールアドレス</p>
+          <input name="email" value="<%= @user.email %>">
+          <p>パスワード</p>
+          <input type="password" name="password" value="<%= @user.password %>">
+          <input type="submit" value="新規登録">
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

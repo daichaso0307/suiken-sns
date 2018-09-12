@@ -5,6 +5,12 @@ class PostsController < ApplicationController
     @post = Post.new
   end
   
+  def index
+    @posts = []
+    @posts = Post.all
+    @posts = @posts.order("created_at desc")
+  end
+  
   def create
     if @login_user.nil?
       redirect_to '/'
@@ -14,12 +20,17 @@ class PostsController < ApplicationController
     @user = User.find_by(id: @login_user.id)
     
     @post = Post.new
-    @post.content = params[:post][:content]
-    @post.title = params[:post][:title]
+    @post.content = params[:content]
+    @post.title = params[:title]
     @post.user_id = @login_user.id
     @post.user_name = @user.name
     @post.save
-    redirect_to '/'
+    if @post.save
+      flash[:notice] = "投稿を作成しました"
+      redirect_to("/")
+    else
+      render("posts/new")
+    end
   end
   
   def show
